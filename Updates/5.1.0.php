@@ -8,13 +8,13 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking;
+namespace Matomo\Plugins\QueuedTracking;
 
-use Piwik\Updater;
-use Piwik\Updates as PiwikUpdates;
-use Piwik\Updater\Migration\Factory as MigrationFactory;
-use Piwik\Settings\Plugin\SystemSetting;
-use Piwik\Settings\FieldConfig;
+use Matomo\Updater;
+use Matomo\Updates as PiwikUpdates;
+use Matomo\Updater\Migration\Factory as MigrationFactory;
+use Matomo\Settings\Plugin\SystemSetting;
+use Matomo\Settings\FieldConfig;
 
 /**
  * Update for version 5.1.0.

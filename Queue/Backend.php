@@ -8,9 +8,9 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Queue;
+namespace Matomo\Plugins\QueuedTracking\Queue;
 
-use Piwik\Concurrency\LockBackend;
+use Matomo\Concurrency\LockBackend;
 
 /**
  * Interface for queue backends.

@@ -7,11 +7,11 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\QueuedTracking\tests\Integration\Queue\Backend;
+namespace Matomo\Plugins\QueuedTracking\tests\Integration\Queue\Backend;
 
-use Piwik\Config;
-use Piwik\Plugins\QueuedTracking\Queue\Backend\Sentinel;
-use Piwik\Plugins\QueuedTracking\Queue\Factory;
+use Matomo\Config;
+use Matomo\Plugins\QueuedTracking\Queue\Backend\Sentinel;
+use Matomo\Plugins\QueuedTracking\Queue\Factory;
 
 /**
  * @group QueuedTracking

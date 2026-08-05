@@ -8,7 +8,7 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Queue;
+namespace Matomo\Plugins\QueuedTracking\Queue;
 
 class LockExpiredException extends \Exception
 {

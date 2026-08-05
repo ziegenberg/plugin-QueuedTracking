@@ -8,9 +8,9 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Settings;
+namespace Matomo\Plugins\QueuedTracking\Settings;
 
-use Piwik\Settings\Plugin\SystemSetting;
+use Matomo\Settings\Plugin\SystemSetting;
 
 /**
  * Defines Settings for QueuedTracking.

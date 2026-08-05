@@ -7,19 +7,19 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\QueuedTracking\tests\Framework\TestCase;
+namespace Matomo\Plugins\QueuedTracking\tests\Framework\TestCase;
 
-use Piwik\Config;
-use Piwik\Plugins\QueuedTracking\Queue;
-use Piwik\Tests\Framework\Mock\Tracker\RequestSet;
-use Piwik\Tracker\RequestSet as PiwikRequestSet;
-use Piwik\Tracker\Request;
+use Matomo\Config;
+use Matomo\Plugins\QueuedTracking\Queue;
+use Matomo\Tests\Framework\Mock\Tracker\RequestSet;
+use Matomo\Tracker\RequestSet as PiwikRequestSet;
+use Matomo\Tracker\Request;
 
 /**
  * @group QueuedTracking
  * @group Redis
  */
-class IntegrationTestCase extends \Piwik\Tests\Framework\TestCase\IntegrationTestCase
+class IntegrationTestCase extends \Matomo\Tests\Framework\TestCase\IntegrationTestCase
 {
     protected $testRequiresRedis = true;
 

@@ -2,7 +2,7 @@
 
 return array(
 
-    'Piwik\Plugins\QueuedTracking\SystemSettings' => Piwik\DI::decorate(function (\Piwik\Plugins\QueuedTracking\SystemSettings $settings) {
+    'Matomo\Plugins\QueuedTracking\SystemSettings' => Matomo\DI::decorate(function (\Matomo\Plugins\QueuedTracking\SystemSettings $settings) {
 
         if ($settings->redisHost->isWritableByCurrentUser()) {
             $settings->redisHost->setValue('127.0.0.1');

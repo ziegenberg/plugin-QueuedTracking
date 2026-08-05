@@ -8,16 +8,16 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Commands;
+namespace Matomo\Plugins\QueuedTracking\Commands;
 
-use Piwik\Application\Environment;
-use Piwik\Log;
-use Piwik\Piwik;
-use Piwik\Plugin\ConsoleCommand;
-use Piwik\Plugins\QueuedTracking\Queue;
-use Piwik\Plugins\QueuedTracking\Queue\Processor;
-use Piwik\Plugins\QueuedTracking\SystemCheck;
-use Piwik\Tracker;
+use Matomo\Application\Environment;
+use Matomo\Log;
+use Matomo\Matomo;
+use Matomo\Plugin\ConsoleCommand;
+use Matomo\Plugins\QueuedTracking\Queue;
+use Matomo\Plugins\QueuedTracking\Queue\Processor;
+use Matomo\Plugins\QueuedTracking\SystemCheck;
+use Matomo\Tracker;
 
 class Process extends ConsoleCommand
 {
@@ -74,7 +74,7 @@ class Process extends ConsoleCommand
         $trackerEnvironment->init();
 
         Log::unsetInstance();
-        $trackerEnvironment->getContainer()->get('Piwik\Access')->setSuperUserAccess(false);
+        $trackerEnvironment->getContainer()->get('Matomo\Access')->setSuperUserAccess(false);
         Tracker::loadTrackerEnvironment();
 
         $backend      = Queue\Factory::makeBackend();
@@ -138,7 +138,7 @@ class Process extends ConsoleCommand
             $this->writeSuccessMessage(
                 array(sprintf('This worker finished queue processing with %sreq/s (%s requests in %02.2f seconds)', $requestsPerSecond, $numRequestsTracked, $neededTime))
             );
-            Piwik::postEvent('Tracker.end');
+            Matomo::postEvent('Tracker.end');
 
             if ($numRequestsTracked > 0) {
                 $lastTimeGotMoreThanZeroTrackedReq = microtime(true);

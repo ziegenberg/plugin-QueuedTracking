@@ -7,14 +7,14 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\QueuedTracking\tests\Integration\Queue\Processor;
+namespace Matomo\Plugins\QueuedTracking\tests\Integration\Queue\Processor;
 
-use Piwik\Plugins\QueuedTracking\Queue\Processor\Handler;
-use Piwik\Plugins\QueuedTracking\tests\Framework\Mock\ForcedException;
-use Piwik\Plugins\QueuedTracking\tests\Framework\Mock\Tracker;
-use Piwik\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
-use Piwik\Tests\Framework\Fixture;
-use Piwik\Tests\Framework\Mock\Tracker\RequestSet;
+use Matomo\Plugins\QueuedTracking\Queue\Processor\Handler;
+use Matomo\Plugins\QueuedTracking\tests\Framework\Mock\ForcedException;
+use Matomo\Plugins\QueuedTracking\tests\Framework\Mock\Tracker;
+use Matomo\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
+use Matomo\Tests\Framework\Fixture;
+use Matomo\Tests\Framework\Mock\Tracker\RequestSet;
 
 class TestHandler extends Handler
 {

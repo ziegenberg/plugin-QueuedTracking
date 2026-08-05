@@ -8,16 +8,16 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking;
+namespace Matomo\Plugins\QueuedTracking;
 
-use Piwik\Common;
-use Piwik\Plugins\QueuedTracking\Queue\Backend\MySQL;
-use Piwik\Plugins\QueuedTracking\Tracker\Handler;
+use Matomo\Common;
+use Matomo\Plugins\QueuedTracking\Queue\Backend\MySQL;
+use Matomo\Plugins\QueuedTracking\Tracker\Handler;
 
-class QueuedTracking extends \Piwik\Plugin
+class QueuedTracking extends \Matomo\Plugin
 {
     /**
-     * @see \Piwik\Plugin::registerEvents
+     * @see \Matomo\Plugin::registerEvents
      */
     public function registerEvents()
     {

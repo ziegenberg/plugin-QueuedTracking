@@ -8,9 +8,9 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking;
+namespace Matomo\Plugins\QueuedTracking;
 
-use Piwik\Config;
+use Matomo\Config;
 
 class Configuration
 {

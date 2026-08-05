@@ -7,11 +7,11 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\QueuedTracking\tests\Framework\Mock;
+namespace Matomo\Plugins\QueuedTracking\tests\Framework\Mock;
 
-use Piwik\Tracker\Request;
+use Matomo\Tracker\Request;
 
-class Tracker extends \Piwik\Tests\Framework\Mock\Tracker
+class Tracker extends \Matomo\Tests\Framework\Mock\Tracker
 {
     public function trackRequest(Request $request)
     {

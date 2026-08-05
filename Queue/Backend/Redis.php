@@ -8,10 +8,10 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Queue\Backend;
+namespace Matomo\Plugins\QueuedTracking\Queue\Backend;
 
-use Piwik\Log;
-use Piwik\Plugins\QueuedTracking\Queue\Backend;
+use Matomo\Log;
+use Matomo\Plugins\QueuedTracking\Queue\Backend;
 
 class Redis implements Backend
 {

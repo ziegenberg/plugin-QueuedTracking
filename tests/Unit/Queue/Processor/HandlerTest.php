@@ -7,12 +7,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\QueuedTracking\tests\Unit\Queue\Backend;
+namespace Matomo\Plugins\QueuedTracking\tests\Unit\Queue\Backend;
 
-use Piwik\Plugins\QueuedTracking\Queue\Processor\Handler;
-use Piwik\Tests\Framework\Mock\Tracker;
-use Piwik\Tests\Framework\Mock\Tracker\Db;
-use Piwik\Tests\Framework\TestCase\UnitTestCase;
+use Matomo\Plugins\QueuedTracking\Queue\Processor\Handler;
+use Matomo\Tests\Framework\Mock\Tracker;
+use Matomo\Tests\Framework\Mock\Tracker\Db;
+use Matomo\Tests\Framework\TestCase\UnitTestCase;
 
 class TestHandler extends Handler
 {

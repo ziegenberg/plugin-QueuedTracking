@@ -7,13 +7,13 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\QueuedTracking\Commands;
+namespace Matomo\Plugins\QueuedTracking\Commands;
 
-use Piwik\Application\Environment;
-use Piwik\Plugin\ConsoleCommand;
-use Piwik\Plugins\QueuedTracking\SystemCheck;
-use Piwik\Tracker;
-use Piwik\Plugins\QueuedTracking\Queue;
+use Matomo\Application\Environment;
+use Matomo\Plugin\ConsoleCommand;
+use Matomo\Plugins\QueuedTracking\SystemCheck;
+use Matomo\Tracker;
+use Matomo\Plugins\QueuedTracking\Queue;
 
 /**
  * This class lets you define a new command. To read more about commands have a look at our Piwik Console guide on

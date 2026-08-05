@@ -8,14 +8,14 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Tracker;
+namespace Matomo\Plugins\QueuedTracking\Tracker;
 
-use Piwik\Common;
-use Piwik\Tracker;
-use Piwik\Plugins\QueuedTracking\Queue;
-use Piwik\Plugins\QueuedTracking\Queue\Backend;
-use Piwik\Plugins\QueuedTracking\Queue\Processor;
-use Piwik\Tracker\RequestSet;
+use Matomo\Common;
+use Matomo\Tracker;
+use Matomo\Plugins\QueuedTracking\Queue;
+use Matomo\Plugins\QueuedTracking\Queue\Backend;
+use Matomo\Plugins\QueuedTracking\Queue\Processor;
+use Matomo\Tracker\RequestSet;
 use Exception;
 
 /**
@@ -47,7 +47,7 @@ class Handler extends Tracker\Handler
         foreach ($requests as $request) {
             $visitorId = $request->getVisitorIdForThirdPartyCookie();
             if (!$visitorId) {
-                $visitorId = \Piwik\Common::hex2bin(\Piwik\Tracker\Visit::generateUniqueVisitorId());
+                $visitorId = \Matomo\Common::hex2bin(\Matomo\Tracker\Visit::generateUniqueVisitorId());
             }
             $request->setThirdPartyCookie($visitorId);
         }

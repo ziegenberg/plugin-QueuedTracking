@@ -7,12 +7,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\QueuedTracking\tests\Integration;
+namespace Matomo\Plugins\QueuedTracking\tests\Integration;
 
-use Piwik\Plugins\QueuedTracking\Queue;
-use Piwik\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
-use Piwik\Tracker\RequestSet;
-use Piwik\Tracker\Request;
+use Matomo\Plugins\QueuedTracking\Queue;
+use Matomo\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
+use Matomo\Tracker\RequestSet;
+use Matomo\Tracker\Request;
 
 /**
  * @group QueuedTracking

@@ -8,13 +8,13 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Queue\Backend;
+namespace Matomo\Plugins\QueuedTracking\Queue\Backend;
 
-use Piwik\Common;
-use Piwik\Db;
-use Piwik\DbHelper;
-use Piwik\Log;
-use Piwik\Plugins\QueuedTracking\Queue\Backend;
+use Matomo\Common;
+use Matomo\Db;
+use Matomo\DbHelper;
+use Matomo\Log;
+use Matomo\Plugins\QueuedTracking\Queue\Backend;
 
 class MySQL implements Backend
 {
@@ -232,7 +232,7 @@ class MySQL implements Backend
 
     /**
      * @internal for tests only
-     * @return \Piwik\Tracker\Db|\Piwik\Db\AdapterInterface|\Piwik\Db
+     * @return \Matomo\Tracker\Db|\Matomo\Db\AdapterInterface|\Matomo\Db
      */
     public function getConnection()
     {

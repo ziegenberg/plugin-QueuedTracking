@@ -8,15 +8,15 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Queue\Processor;
+namespace Matomo\Plugins\QueuedTracking\Queue\Processor;
 
-use Piwik\Common;
-use Piwik\Container\StaticContainer;
-use Piwik\Db;
-use Piwik\Exception\UnexpectedWebsiteFoundException;
-use Piwik\Plugins\QueuedTracking\Configuration;
-use Piwik\Tracker;
-use Piwik\Tracker\RequestSet;
+use Matomo\Common;
+use Matomo\Container\StaticContainer;
+use Matomo\Db;
+use Matomo\Exception\UnexpectedWebsiteFoundException;
+use Matomo\Plugins\QueuedTracking\Configuration;
+use Matomo\Tracker;
+use Matomo\Tracker\RequestSet;
 use Exception;
 
 class Handler
@@ -66,7 +66,7 @@ class Handler
                     $message .= "\nFailed request set:\n" . json_encode($requestSet->getState());
                 }
 
-                StaticContainer::get(\Piwik\Log\LoggerInterface::class)->warning($message);
+                StaticContainer::get(\Matomo\Log\LoggerInterface::class)->warning($message);
 
                 // Wrap any throwables so that they are caught by the try/catch in Processor, which is expecting Exceptions
                 throw ($th instanceof \Exception ? $th : new \Exception($th->getMessage(), $th->getCode(), $th));

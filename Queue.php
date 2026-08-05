@@ -8,11 +8,11 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking;
+namespace Matomo\Plugins\QueuedTracking;
 
-use Piwik\Plugins\QueuedTracking\Queue\Backend;
-use Piwik\Tracker\RequestSet;
-use Piwik\Plugins\QueuedTracking\Queue\Backend\Redis;
+use Matomo\Plugins\QueuedTracking\Queue\Backend;
+use Matomo\Tracker\RequestSet;
+use Matomo\Plugins\QueuedTracking\Queue\Backend\Redis;
 
 class Queue
 {

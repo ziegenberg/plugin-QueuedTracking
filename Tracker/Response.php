@@ -8,10 +8,10 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Tracker;
+namespace Matomo\Plugins\QueuedTracking\Tracker;
 
-use Piwik\Common;
-use Piwik\Tracker\Response as TrackerResponse;
+use Matomo\Common;
+use Matomo\Tracker\Response as TrackerResponse;
 
 class Response extends TrackerResponse
 {

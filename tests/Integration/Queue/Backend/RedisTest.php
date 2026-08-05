@@ -7,10 +7,10 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\QueuedTracking\tests\Integration\Queue\Backend;
+namespace Matomo\Plugins\QueuedTracking\tests\Integration\Queue\Backend;
 
-use Piwik\Plugins\QueuedTracking\Queue\Backend\Redis;
-use Piwik\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
+use Matomo\Plugins\QueuedTracking\Queue\Backend\Redis;
+use Matomo\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
 
 /**
  * @group QueuedTracking

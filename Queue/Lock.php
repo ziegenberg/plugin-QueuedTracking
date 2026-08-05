@@ -8,9 +8,9 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Queue;
+namespace Matomo\Plugins\QueuedTracking\Queue;
 
-class Lock extends \Piwik\Concurrency\Lock
+class Lock extends \Matomo\Concurrency\Lock
 {
     public const LOCK_KEY_START = 'QueuedTrackingLock';
 

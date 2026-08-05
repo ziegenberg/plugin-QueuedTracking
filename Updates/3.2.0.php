@@ -8,11 +8,11 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking;
+namespace Matomo\Plugins\QueuedTracking;
 
-use Piwik\Updater;
-use Piwik\Updates as PiwikUpdates;
-use Piwik\Updater\Migration\Factory as MigrationFactory;
+use Matomo\Updater;
+use Matomo\Updates as PiwikUpdates;
+use Matomo\Updater\Migration\Factory as MigrationFactory;
 
 class Updates_3_2_0 extends PiwikUpdates
 {

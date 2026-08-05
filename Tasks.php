@@ -8,15 +8,15 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking;
+namespace Matomo\Plugins\QueuedTracking;
 
-use Piwik\Common;
-use Piwik\Db;
-use Piwik\Mail;
-use Piwik\Plugins\QueuedTracking\Queue\Backend\MySQL;
-use Piwik\SettingsPiwik;
+use Matomo\Common;
+use Matomo\Db;
+use Matomo\Mail;
+use Matomo\Plugins\QueuedTracking\Queue\Backend\MySQL;
+use Matomo\SettingsPiwik;
 
-class Tasks extends \Piwik\Plugin\Tasks
+class Tasks extends \Matomo\Plugin\Tasks
 {
     /**
      * @var Configuration
@@ -35,7 +35,7 @@ class Tasks extends \Piwik\Plugin\Tasks
     }
 
     /**
-     * run eg using ./console core:run-scheduled-tasks "Piwik\Plugins\QueuedTracking\Tasks.notifyQueueSize"
+     * run eg using ./console core:run-scheduled-tasks "Matomo\Plugins\QueuedTracking\Tasks.notifyQueueSize"
      */
     public function notifyQueueSize()
     {
@@ -90,7 +90,7 @@ class Tasks extends \Piwik\Plugin\Tasks
     }
 
     /**
-     * run eg using ./console core:run-scheduled-tasks "Piwik\Plugins\QueuedTracking\Tasks.optimizeQueueTable"
+     * run eg using ./console core:run-scheduled-tasks "Matomo\Plugins\QueuedTracking\Tasks.optimizeQueueTable"
      */
     public function optimizeQueueTable()
     {

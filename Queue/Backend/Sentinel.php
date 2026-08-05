@@ -8,10 +8,10 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Queue\Backend;
+namespace Matomo\Plugins\QueuedTracking\Queue\Backend;
 
-use Piwik\Log;
-use Piwik\Piwik;
+use Matomo\Log;
+use Matomo\Matomo;
 use Exception;
 
 include_once __DIR__ . '/../../libs/credis/Client.php';
@@ -33,7 +33,7 @@ class Sentinel extends Redis
         $ports = explode(',', $this->port);
 
         if (count($hosts) !== count($ports)) {
-            throw new Exception(Piwik::translate('QueuedTracking_NumHostsNotMatchNumPorts'));
+            throw new Exception(Matomo::translate('QueuedTracking_NumHostsNotMatchNumPorts'));
         }
 
         foreach ($hosts as $index => $host) { // Sort or randomize as appropriate

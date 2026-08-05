@@ -8,21 +8,21 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking;
+namespace Matomo\Plugins\QueuedTracking;
 
-use Piwik\Plugins\QueuedTracking\Settings\NumWorkers;
-use Piwik\Settings\Setting;
-use Piwik\Settings\FieldConfig;
-use Piwik\Plugins\QueuedTracking\Queue\Factory;
-use Piwik\Piwik;
+use Matomo\Plugins\QueuedTracking\Settings\NumWorkers;
+use Matomo\Settings\Setting;
+use Matomo\Settings\FieldConfig;
+use Matomo\Plugins\QueuedTracking\Queue\Factory;
+use Matomo\Matomo;
 use Exception;
-use Piwik\Validators\CharacterLength;
-use Piwik\Validators\NumberRange;
+use Matomo\Validators\CharacterLength;
+use Matomo\Validators\NumberRange;
 
 /**
  * Defines Settings for QueuedTracking.
  */
-class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
+class SystemSettings extends \Matomo\Settings\Plugin\SystemSettings
 {
     /** @var Setting */
     public $backend;
@@ -66,9 +66,9 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     public function getAvailableRedisBackendTypes()
     {
         return array(
-            1 => Piwik::translate('QueuedTracking_AvailableRedisBackendTypeStandAlone'),
-            2 => Piwik::translate('QueuedTracking_AvailableRedisBackendTypeSentinel'),
-            3 => Piwik::translate('QueuedTracking_AvailableRedisBackendTypeCluster')
+            1 => Matomo::translate('QueuedTracking_AvailableRedisBackendTypeStandAlone'),
+            2 => Matomo::translate('QueuedTracking_AvailableRedisBackendTypeSentinel'),
+            3 => Matomo::translate('QueuedTracking_AvailableRedisBackendTypeCluster')
         );
     }
 
@@ -76,7 +76,7 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     {
         $field->validate = function ($value) {
             if ((is_string($value) && !ctype_digit($value)) || (!is_string($value) && !is_int($value))) {
-                throw new \Exception(Piwik::translate('QueuedTracking_ExceptionValueIsNotInt'));
+                throw new \Exception(Matomo::translate('QueuedTracking_ExceptionValueIsNotInt'));
             }
         };
     }
@@ -133,15 +133,15 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
         $self = $this;
 
         return $this->makeSetting('redisHost', $default = '127.0.0.1', FieldConfig::TYPE_STRING, function (FieldConfig $field) use ($self) {
-            $field->title = Piwik::translate('QueuedTracking_RedisHostFieldTitle');
+            $field->title = Matomo::translate('QueuedTracking_RedisHostFieldTitle');
             $field->condition = 'backend=="redis"';
             $field->uiControl = FieldConfig::UI_CONTROL_TEXT;
             $field->uiControlAttributes = array('size' => 500);
-            $field->inlineHelp = Piwik::translate('QueuedTracking_RedisHostFieldHelp') . '</br></br>'
-                . Piwik::translate('QueuedTracking_RedisHostFieldHelpExtended') . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_RedisHostFieldHelp') . '</br></br>'
+                . Matomo::translate('QueuedTracking_RedisHostFieldHelpExtended') . '</br>';
 
             if ($self->isUsingSentinelBackend() || $self->isUsingClusterBackend()) {
-                $field->inlineHelp .= '</br>' . Piwik::translate('QueuedTracking_RedisHostFieldHelpExtendedSentinel') . '</br>';
+                $field->inlineHelp .= '</br>' . Matomo::translate('QueuedTracking_RedisHostFieldHelpExtendedSentinel') . '</br>';
             }
 
             $field->validate = function ($value) use ($self) {
@@ -168,14 +168,14 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
         }
 
         return $this->makeSetting('redisPort', $default, FieldConfig::TYPE_STRING, function (FieldConfig $field) use ($self) {
-            $field->title = Piwik::translate('QueuedTracking_RedisPortFieldTitle');
+            $field->title = Matomo::translate('QueuedTracking_RedisPortFieldTitle');
             $field->condition = 'backend=="redis"';
             $field->uiControl = FieldConfig::UI_CONTROL_TEXT;
             $field->uiControlAttributes = array('size' => 100);
-            $field->inlineHelp = Piwik::translate('QueuedTracking_RedisPortFieldHelp') . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_RedisPortFieldHelp') . '</br>';
 
             if ($self->isUsingSentinelBackend() || $self->isUsingClusterBackend()) {
-                $field->inlineHelp .= '</br>' . Piwik::translate('QueuedTracking_RedisHostFieldHelpExtendedSentinel') . '</br>';
+                $field->inlineHelp .= '</br>' . Matomo::translate('QueuedTracking_RedisHostFieldHelpExtendedSentinel') . '</br>';
             }
 
             $field->validate = function ($value) use ($self) {
@@ -203,11 +203,11 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     private function createRedisTimeoutSetting()
     {
         $setting = $this->makeSetting('redisTimeout', $default = 0.0, FieldConfig::TYPE_FLOAT, function (FieldConfig $field) {
-            $field->title = Piwik::translate('QueuedTracking_RedisTimeoutFieldTitle');
+            $field->title = Matomo::translate('QueuedTracking_RedisTimeoutFieldTitle');
             $field->condition = 'backend=="redis"';
             $field->uiControl = FieldConfig::UI_CONTROL_TEXT;
             $field->uiControlAttributes = array('size' => 5);
-            $field->inlineHelp = Piwik::translate('QueuedTracking_RedisTimeoutFieldTitle') . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_RedisTimeoutFieldTitle') . '</br>';
             $field->validators[] = new NumberRange();
             $field->validators[] = new CharacterLength(1, 5);
         });
@@ -222,10 +222,10 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     {
         $numQueueWorkers = new NumWorkers('numQueueWorkers', $default = 1, FieldConfig::TYPE_INT, $this->pluginName);
         $numQueueWorkers->setConfigureCallback(function (FieldConfig $field) {
-            $field->title = Piwik::translate('QueuedTracking_NumberOfQueueWorkersFieldTitle');
+            $field->title = Matomo::translate('QueuedTracking_NumberOfQueueWorkersFieldTitle');
             $field->uiControl = FieldConfig::UI_CONTROL_TEXT;
             $field->uiControlAttributes = array('size' => 5);
-            $field->inlineHelp = Piwik::translate('QueuedTracking_NumberOfQueueWorkersFieldHelpNew') . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_NumberOfQueueWorkersFieldHelpNew') . '</br>';
             $this->assignValueIsIntValidator($field);
             $field->validators[] = new NumberRange(1, 4096);
         });
@@ -238,11 +238,11 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     private function createRedisPasswordSetting()
     {
         return $this->makeSetting('redisPassword', $default = '', FieldConfig::TYPE_STRING, function (FieldConfig $field) {
-            $field->title = Piwik::translate('QueuedTracking_RedisPasswordFieldTitle');
+            $field->title = Matomo::translate('QueuedTracking_RedisPasswordFieldTitle');
             $field->condition = 'backend=="redis"';
             $field->uiControl = FieldConfig::UI_CONTROL_PASSWORD;
             $field->uiControlAttributes = array('size' => 128);
-            $field->inlineHelp = Piwik::translate('QueuedTracking_RedisPasswordFieldHelp') . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_RedisPasswordFieldHelp') . '</br>';
             $field->validators[] = new CharacterLength(null, 128);
         });
     }
@@ -250,11 +250,11 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     private function createRedisDatabaseSetting()
     {
         return $this->makeSetting('redisDatabase', $default = 0, FieldConfig::TYPE_INT, function (FieldConfig $field) {
-            $field->title = Piwik::translate('QueuedTracking_RedisDatabaseFieldTitle');
+            $field->title = Matomo::translate('QueuedTracking_RedisDatabaseFieldTitle');
             $field->condition = 'backend=="redis"';
             $field->uiControl = FieldConfig::UI_CONTROL_TEXT;
             $field->uiControlAttributes = array('size' => 5);
-            $field->inlineHelp = Piwik::translate('QueuedTracking_RedisDatabaseFieldHelp') . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_RedisDatabaseFieldHelp') . '</br>';
             $field->validators[] = new NumberRange();
             $field->validators[] = new CharacterLength(1, 5);
             $this->assignValueIsIntValidator($field);
@@ -266,9 +266,9 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
         $self = $this;
 
         return $this->makeSetting('queueEnabled', $default = false, FieldConfig::TYPE_BOOL, function (FieldConfig $field) use ($self) {
-            $field->title = Piwik::translate('QueuedTracking_QueueEnabledFieldTitle');
+            $field->title = Matomo::translate('QueuedTracking_QueueEnabledFieldTitle');
             $field->uiControl = FieldConfig::UI_CONTROL_CHECKBOX;
-            $field->inlineHelp = Piwik::translate('QueuedTracking_QueueEnabledFieldHelp') . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_QueueEnabledFieldHelp') . '</br>';
             $field->validate = function ($value) use ($self) {
                 $value = (bool) $value;
 
@@ -291,10 +291,10 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     private function createNumRequestsToProcessSetting()
     {
         return $this->makeSetting('numRequestsToProcess', $default = 25, FieldConfig::TYPE_INT, function (FieldConfig $field) {
-            $field->title = Piwik::translate('QueuedTracking_NumRequestsToProcessFieldTitle');
+            $field->title = Matomo::translate('QueuedTracking_NumRequestsToProcessFieldTitle');
             $field->uiControl = FieldConfig::UI_CONTROL_TEXT;
             $field->uiControlAttributes = array('size' => 3);
-            $field->inlineHelp = Piwik::translate('QueuedTracking_NumRequestsToProcessFieldHelp') . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_NumRequestsToProcessFieldHelp') . '</br>';
             $field->validators[] = new NumberRange(1);
         });
     }
@@ -302,9 +302,9 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     private function createProcessInTrackingRequestSetting()
     {
         return $this->makeSetting('processDuringTrackingRequest', $default = true, FieldConfig::TYPE_BOOL, function (FieldConfig $field) {
-            $field->title = Piwik::translate('QueuedTracking_ProcessDuringRequestFieldTitle');
+            $field->title = Matomo::translate('QueuedTracking_ProcessDuringRequestFieldTitle');
             $field->uiControl = FieldConfig::UI_CONTROL_CHECKBOX;
-            $field->inlineHelp = Piwik::translate('QueuedTracking_ProcessDuringRequestFieldHelp', ['<code>', '</code>']) . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_ProcessDuringRequestFieldHelp', ['<code>', '</code>']) . '</br>';
         });
     }
 
@@ -317,7 +317,7 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
         $values = $this->convertCommaSeparatedValueToArray($value);
 
         if (count($values) > 1) {
-            throw new Exception(Piwik::translate('QueuedTracking_MultipleServersOnlyConfigurableIfSentinelEnabled'));
+            throw new Exception(Matomo::translate('QueuedTracking_MultipleServersOnlyConfigurableIfSentinelEnabled'));
         }
     }
 
@@ -346,10 +346,10 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     private function createBackendSetting()
     {
         return $this->makeSetting('backend', $default = 'redis', FieldConfig::TYPE_STRING, function (FieldConfig $field) {
-            $field->title = Piwik::translate('QueuedTracking_BackendSettingFieldTitle');
+            $field->title = Matomo::translate('QueuedTracking_BackendSettingFieldTitle');
             $field->uiControl = FieldConfig::UI_CONTROL_SINGLE_SELECT;
             $field->availableValues = array('redis' => 'Redis', 'mysql' => 'MySQL');
-            $field->inlineHelp = Piwik::translate('QueuedTracking_BackendSettingFieldHelp') . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_BackendSettingFieldHelp') . '</br>';
         });
     }
 
@@ -360,18 +360,18 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
             $field->uiControl = FieldConfig::UI_CONTROL_RADIO;
             $field->availableValues = $this->getAvailableRedisBackendTypes();
             $field->condition = 'backend=="redis"';
-            $field->inlineHelp = Piwik::translate('QueuedTracking_WhatRedisBackEndType') . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_WhatRedisBackEndType') . '</br>';
         });
     }
 
     private function createSetSentinelMasterName()
     {
         return $this->makeSetting('sentinelMasterName', $default = 'mymaster', FieldConfig::TYPE_STRING, function (FieldConfig $field) {
-            $field->title = Piwik::translate('QueuedTracking_MasterNameFieldTitle');
+            $field->title = Matomo::translate('QueuedTracking_MasterNameFieldTitle');
             $field->condition = 'backend=="redis"';
             $field->uiControl = FieldConfig::UI_CONTROL_TEXT;
             $field->uiControlAttributes = array('size' => 200);
-            $field->inlineHelp = Piwik::translate('QueuedTracking_MasterNameFieldHelp') . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_MasterNameFieldHelp') . '</br>';
             $field->validators[] = new CharacterLength(0, 200);
             $field->transform = function ($value) {
                 if (empty($value)) {
@@ -385,10 +385,10 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
     private function createUsePasswordForSentinelInstances()
     {
         return $this->makeSetting('usePasswordForSentinelInstances', $default = false, FieldConfig::TYPE_BOOL, function (FieldConfig $field) {
-            $field->title = Piwik::translate('QueuedTracking_UsePasswordForSentinelsTitle');
+            $field->title = Matomo::translate('QueuedTracking_UsePasswordForSentinelsTitle');
             $field->condition = 'backend=="redis"';
             $field->uiControl = FieldConfig::UI_CONTROL_CHECKBOX;
-            $field->inlineHelp = Piwik::translate('QueuedTracking_UsePasswordForSentinelsHelp', ['</br></br>']) . '</br>';
+            $field->inlineHelp = Matomo::translate('QueuedTracking_UsePasswordForSentinelsHelp', ['</br></br>']) . '</br>';
         });
     }
 
@@ -400,7 +400,7 @@ class SystemSettings extends \Piwik\Settings\Plugin\SystemSettings
         $numPorts = count(explode(',', $ports));
 
         if (($hosts || $ports) && $numHosts !== $numPorts) {
-            throw new Exception(Piwik::translate('QueuedTracking_NumHostsNotMatchNumPorts'));
+            throw new Exception(Matomo::translate('QueuedTracking_NumHostsNotMatchNumPorts'));
         }
     }
 

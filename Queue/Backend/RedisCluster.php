@@ -8,9 +8,9 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Queue\Backend;
+namespace Matomo\Plugins\QueuedTracking\Queue\Backend;
 
-use Piwik\Log;
+use Matomo\Log;
 
 class RedisCluster extends Redis
 {
@@ -302,7 +302,7 @@ end';
         $ports = explode(',', $this->port);
 
         if (count($hosts) !== count($ports)) {
-            throw new Exception(Piwik::translate('QueuedTracking_NumHostsNotMatchNumPorts'));
+            throw new Exception(Matomo::translate('QueuedTracking_NumHostsNotMatchNumPorts'));
         }
 
         $hostsPorts = array_map(fn($host, $port): string => "$host:$port", $hosts, $ports);

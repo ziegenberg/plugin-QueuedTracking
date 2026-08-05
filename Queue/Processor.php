@@ -8,13 +8,13 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Queue;
+namespace Matomo\Plugins\QueuedTracking\Queue;
 
-use Piwik\Common;
-use Piwik\Tracker;
-use Piwik\Tracker\RequestSet;
-use Piwik\Plugins\QueuedTracking\Queue;
-use Piwik\Plugins\QueuedTracking\Queue\Processor\Handler;
+use Matomo\Common;
+use Matomo\Tracker;
+use Matomo\Tracker\RequestSet;
+use Matomo\Plugins\QueuedTracking\Queue;
+use Matomo\Plugins\QueuedTracking\Queue\Processor\Handler;
 use Exception;
 
 /**

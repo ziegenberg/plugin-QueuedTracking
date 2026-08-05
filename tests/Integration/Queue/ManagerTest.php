@@ -7,12 +7,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\QueuedTracking\tests\Integration\Queue;
+namespace Matomo\Plugins\QueuedTracking\tests\Integration\Queue;
 
-use Piwik\Tests\Framework\Fixture;
-use Piwik\Plugins\QueuedTracking\Queue;
-use Piwik\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
-use Piwik\Tracker\RequestSet;
+use Matomo\Tests\Framework\Fixture;
+use Matomo\Plugins\QueuedTracking\Queue;
+use Matomo\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
+use Matomo\Tracker\RequestSet;
 
 class TestManager extends Queue\Manager
 {

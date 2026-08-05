@@ -7,14 +7,14 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\QueuedTracking\tests\Integration\Queue;
+namespace Matomo\Plugins\QueuedTracking\tests\Integration\Queue;
 
-use Piwik\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
-use Piwik\Tests\Framework\Fixture;
-use Piwik\Tracker\TrackerConfig;
-use Piwik\Tracker;
-use Piwik\Plugins\QueuedTracking\Queue;
-use Piwik\Plugins\QueuedTracking\Queue\Processor;
+use Matomo\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
+use Matomo\Tests\Framework\Fixture;
+use Matomo\Tracker\TrackerConfig;
+use Matomo\Tracker;
+use Matomo\Plugins\QueuedTracking\Queue;
+use Matomo\Plugins\QueuedTracking\Queue\Processor;
 
 class TestProcessor extends Processor
 {
@@ -157,7 +157,7 @@ class ProcessorTest extends IntegrationTestCase
 
     public function test_processRequestSets_ShouldThrowAnExceptionAndRollback_InCaseWeDoNoLongerHaveTheLock()
     {
-        $this->expectException(\Piwik\Plugins\QueuedTracking\Queue\LockExpiredException::class);
+        $this->expectException(\Matomo\Plugins\QueuedTracking\Queue\LockExpiredException::class);
         $this->expectExceptionMessage('Rolled back');
 
         $queuedRequestSets = array(
@@ -403,7 +403,7 @@ class ProcessorTest extends IntegrationTestCase
 
     private function createTracker()
     {
-        $tracker = new \Piwik\Plugins\QueuedTracking\tests\Framework\Mock\Tracker();
+        $tracker = new \Matomo\Plugins\QueuedTracking\tests\Framework\Mock\Tracker();
         return $tracker;
     }
 }

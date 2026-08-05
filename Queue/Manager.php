@@ -8,13 +8,13 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Queue;
+namespace Matomo\Plugins\QueuedTracking\Queue;
 
-use Piwik\Exception\InvalidRequestParameterException;
-use Piwik\Plugins\QueuedTracking\Queue;
-use Piwik\Plugins\QueuedTracking\Queue\Backend;
-use Piwik\Tracker\RequestSet;
-use Piwik\Tracker;
+use Matomo\Exception\InvalidRequestParameterException;
+use Matomo\Plugins\QueuedTracking\Queue;
+use Matomo\Plugins\QueuedTracking\Queue\Backend;
+use Matomo\Tracker\RequestSet;
+use Matomo\Tracker;
 
 class Manager
 {

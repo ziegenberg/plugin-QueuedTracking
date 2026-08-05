@@ -8,11 +8,11 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Commands;
+namespace Matomo\Plugins\QueuedTracking\Commands;
 
-use Piwik\Plugin\ConsoleCommand;
-use Piwik\Plugins\QueuedTracking\Queue;
-use Piwik\Plugins\QueuedTracking\SystemCheck;
+use Matomo\Plugin\ConsoleCommand;
+use Matomo\Plugins\QueuedTracking\Queue;
+use Matomo\Plugins\QueuedTracking\SystemCheck;
 
 class LockStatus extends ConsoleCommand
 {

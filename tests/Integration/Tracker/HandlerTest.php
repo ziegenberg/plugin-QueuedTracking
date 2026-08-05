@@ -7,18 +7,18 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\QueuedTracking\tests\Integration\Tracker;
+namespace Matomo\Plugins\QueuedTracking\tests\Integration\Tracker;
 
-use Piwik\Db;
-use Piwik\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
-use Piwik\Plugins\QueuedTracking\Tracker\Handler;
-use Piwik\Exception\UnexpectedWebsiteFoundException;
-use Piwik\Tests\Framework\Fixture;
-use Piwik\Plugins\QueuedTracking\tests\Framework\Mock\Tracker\Response;
-use Piwik\Plugins\QueuedTracking\Queue;
-use Piwik\Tests\Framework\Mock\Tracker\ScheduledTasksRunner;
-use Piwik\Tracker;
-use Piwik\Tests\Framework\Mock\Tracker\RequestSet;
+use Matomo\Db;
+use Matomo\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
+use Matomo\Plugins\QueuedTracking\Tracker\Handler;
+use Matomo\Exception\UnexpectedWebsiteFoundException;
+use Matomo\Tests\Framework\Fixture;
+use Matomo\Plugins\QueuedTracking\tests\Framework\Mock\Tracker\Response;
+use Matomo\Plugins\QueuedTracking\Queue;
+use Matomo\Tests\Framework\Mock\Tracker\ScheduledTasksRunner;
+use Matomo\Tracker;
+use Matomo\Tests\Framework\Mock\Tracker\RequestSet;
 use Exception;
 
 /**

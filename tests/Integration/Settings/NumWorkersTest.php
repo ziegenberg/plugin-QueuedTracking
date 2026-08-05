@@ -7,12 +7,12 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\QueuedTracking\tests\Integration\Settings;
+namespace Matomo\Plugins\QueuedTracking\tests\Integration\Settings;
 
-use Piwik\Plugins\QueuedTracking\Queue\Factory;
-use Piwik\Plugins\QueuedTracking\SystemSettings;
-use Piwik\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
-use Piwik\Tracker\RequestSet;
+use Matomo\Plugins\QueuedTracking\Queue\Factory;
+use Matomo\Plugins\QueuedTracking\SystemSettings;
+use Matomo\Plugins\QueuedTracking\tests\Framework\TestCase\IntegrationTestCase;
+use Matomo\Tracker\RequestSet;
 
 /**
  * @group QueuedTracking
@@ -33,7 +33,7 @@ class NumWorkersTest extends IntegrationTestCase
         $this->clearBackend();
 
         $container = self::$fixture->piwikEnvironment->getContainer();
-        $this->settings = $container->get('Piwik\Plugins\QueuedTracking\SystemSettings');
+        $this->settings = $container->get('Matomo\Plugins\QueuedTracking\SystemSettings');
     }
 
     public function tearDown(): void

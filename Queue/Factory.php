@@ -8,11 +8,11 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\Queue;
+namespace Matomo\Plugins\QueuedTracking\Queue;
 
-use Piwik\Container\StaticContainer;
-use Piwik\Plugins\QueuedTracking\Queue;
-use Piwik\Plugins\QueuedTracking\SystemSettings;
+use Matomo\Container\StaticContainer;
+use Matomo\Plugins\QueuedTracking\Queue;
+use Matomo\Plugins\QueuedTracking\SystemSettings;
 use Exception;
 
 /**
@@ -45,11 +45,11 @@ class Factory
     }
 
     /**
-     * @return \Piwik\Plugins\QueuedTracking\SystemSettings
+     * @return \Matomo\Plugins\QueuedTracking\SystemSettings
      */
     public static function getSettings()
     {
-        return StaticContainer::get('Piwik\Plugins\QueuedTracking\SystemSettings');
+        return StaticContainer::get('Matomo\Plugins\QueuedTracking\SystemSettings');
     }
 
     public static function makeBackendFromSettings(SystemSettings $settings)

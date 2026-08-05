@@ -8,9 +8,9 @@
  *
  */
 
-namespace Piwik\Plugins\QueuedTracking\tests\Unit;
+namespace Matomo\Plugins\QueuedTracking\tests\Unit;
 
-use Piwik\Plugins\QueuedTracking\Queue;
+use Matomo\Plugins\QueuedTracking\Queue;
 
 /**
  * @group QueuedTracking
